@@ -22,10 +22,14 @@ class GameViewController: UIViewController {
 
     @IBAction func showAlert() {
         let alert = UIAlertController(title: "Hola mundo", message: "Este es mi juego Aim For That!", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Genial", style: .default, handler: nil)
+        let action = UIAlertAction(title: "Genial!5", style: .default, handler: nil)
         alert.addAction(action)
         
         present(alert, animated: true)
+    }
+    
+    @IBAction func sliderMove(_ sender: UISlider) {
+        print("El valor del slider es \(sender.value)")
     }
     
 }
