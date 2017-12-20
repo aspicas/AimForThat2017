@@ -101,6 +101,9 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lgC-ri-Cl9">
                                 <rect key="frame" x="466" y="24" width="22" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <segue destination="CX3-PG-yDg" kind="presentation" modalTransitionStyle="crossDissolve" id="82F-Ja-SiP"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g8H-o3-U72">
                                 <rect key="frame" x="190" y="195" width="172" height="30"/>
@@ -125,6 +128,45 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="117.25352112676056" y="118.125"/>
+        </scene>
+        <!--About Us View Controller-->
+        <scene sceneID="f0d-h1-KwE">
+            <objects>
+                <viewController id="CX3-PG-yDg" customClass="AboutUsViewController" customModule="AimForThat2017" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7iT-sN-oEr">
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kgi-Qa-6Ph">
+                                <rect key="frame" x="223" y="278" width="122" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="20"/>
+                                <state key="normal" title="Volver al Juego"/>
+                                <connections>
+                                    <action selector="backPressed" destination="CX3-PG-yDg" eventType="touchUpInside" id="yUk-X8-SjH"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="VXV-IK-dJm">
+                                <rect key="frame" x="20" y="20" width="528" height="250"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <string key="text">*** Bienvenido a Aim For That 2017 ***
+
+Bienvenido al fantastico juego de Aim For That que lanzo Juan Gabriel con Frogames en 2013. En él, puedes ganar puntos moviendo el slider por la pantalla. 
+
+El objetivo es colocar el slider tan cerca como te sea posible del objetivo que te indicará el juego. Cuanto mas cerca te halles, más puntos obtendrás.
+
+¿A qué esperas para empezar a disfrutar y ganar?</string>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.71438905659999996" green="0.72124085709999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="2Bs-d3-1RH"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rz0-jo-CRH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="819.71830985915494" y="116.25"/>
         </scene>
     </scenes>
 </document>
