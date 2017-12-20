@@ -10,10 +10,17 @@ import UIKit
 
 class AboutUsViewController: UIViewController {
 
+    @IBOutlet weak var webView: UIWebView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        if let url = Bundle.main.url(forResource: "AimForThat", withExtension: "html") {
+            //Transformar html en un fichero de datos
+            if let htmlData = try? Data(contentsOf: url) {
+                let baseURL = URL(fileURLWithPath: Bundle.main.bundlePath)
+                self.webView.load(htmlData, mimeType: "text/html", textEncodingName: "UTF-8", baseURL: baseURL)
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
