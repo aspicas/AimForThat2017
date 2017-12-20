@@ -10,9 +10,14 @@ import UIKit
 
 class GameViewController: UIViewController {
 
+    @IBOutlet weak var slider: UISlider!
+    
+    var currentValue: Int = 0
+    var targetValue: Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        startNewRound()
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,15 +26,27 @@ class GameViewController: UIViewController {
     }
 
     @IBAction func showAlert() {
-        let alert = UIAlertController(title: "Hola mundo", message: "Este es mi juego Aim For That!", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Genial!5", style: .default, handler: nil)
+        let message = """
+            El valor del slider es \(self.currentValue)
+            El valor del target es \(self.targetValue)
+        """
+        let alert = UIAlertController(title: "Hola mundo", message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "Genial!", style: .default, handler: nil)
         alert.addAction(action)
         
         present(alert, animated: true)
+        
+        startNewRound()
     }
     
     @IBAction func sliderMove(_ sender: UISlider) {
-        print("El valor del slider es \(sender.value)")
+        self.currentValue = lroundf(sender.value)
+    }
+    
+    func startNewRound() {
+        self.targetValue = 1 + Int(arc4random_uniform(100)) // 1 + numeros aleatorios del 0 al 99
+        self.currentValue = 50
+        self.slider.value = Float(self.currentValue)
     }
     
 }
