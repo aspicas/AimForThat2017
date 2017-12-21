@@ -15,16 +15,21 @@ class GameViewController: UIViewController {
     var targetValue  : Int = 0
     var score        : Int = 0
     var round        : Int = 0
+    var time         : Int = 0
+    var timer        : Timer?
     
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var targetLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var roundLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var maxScoreLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        startNewGame()
         setupSlider()
+        resetGame()
+        updateLabels()
     }
     
     func setupSlider() {
@@ -97,6 +102,9 @@ class GameViewController: UIViewController {
         self.targetLabel.text = "\(self.targetValue)"
         self.scoreLabel.text = "\(self.score)"
         self.roundLabel.text = "\(self.round)"
+        self.timeLabel.text = "\(self.time)"
+        let currentMaxScore = UserDefaults.standard.integer(forKey: "maxscore")
+        self.maxScoreLabel.text = "\(currentMaxScore)"
     }
     
     @IBAction func startNewGame() {
@@ -114,8 +122,25 @@ class GameViewController: UIViewController {
     func resetGame() {
         self.score = 0
         self.round = 0
+        self.time = 60
+        if timer != nil {
+            timer?.invalidate()
+        }
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(Tick), userInfo: nil, repeats: true)
         self.startNewRound()
     }
     
+    @objc func Tick(){
+        self.time -= 1
+        self.timeLabel.text = "\(self.time)"
+        let maxscore = UserDefaults.standard.integer(forKey: "maxscore")
+        if maxscore < self.score {
+            UserDefaults.standard.set(self.score, forKey: "maxscore")
+        }
+        if self.time <= 0 {   
+            resetGame()
+        }
+        updateLabels()
+    }
 }
 
