@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import QuartzCore
 
 class GameViewController: UIViewController {
 
@@ -22,8 +23,7 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        resetGame()
-        updateLabels()
+        startNewGame()
         setupSlider()
     }
     
@@ -102,6 +102,13 @@ class GameViewController: UIViewController {
     @IBAction func startNewGame() {
         resetGame()
         updateLabels()
+        
+        let transition = CATransition()
+        transition.type = kCATransitionFade
+        transition.duration = 1
+        transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        
+        self.view.layer.add(transition, forKey: nil) // Se le puede dar un nombre para luego frenarla o modificarla.
     }
     
     func resetGame() {
