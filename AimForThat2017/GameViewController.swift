@@ -137,7 +137,7 @@ class GameViewController: UIViewController {
         if maxscore < self.score {
             UserDefaults.standard.set(self.score, forKey: "maxscore")
         }
-        if self.time <= 0 {   
+        if self.time <= 0 {
             resetGame()
         }
         updateLabels()
